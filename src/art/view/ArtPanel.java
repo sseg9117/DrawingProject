@@ -1,5 +1,7 @@
 package art.view;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Hashtable;
 
@@ -77,13 +79,33 @@ public class ArtPanel extends JPanel
 
 	private void setupPanel()
 	{
+		this.setLayout(appLayout);
+		this.setBackground(Color.DARK_GRAY);
+		this.setPreferredSize(new Dimension(1024, 768));
+		this.add(canvas);
+		
+		buttonPanel.setPreferredSize(new Dimension(200, 450));;
+		buttonPanel.add(triangleButton);
+		buttonPanel.add(rectangleButton);
+		buttonPanel.add(ellipseButton);
+		buttonPanel.add(polygonButton);
+		buttonPanel.add(clearButton);
+		buttonPanel.add(saveButton);
+		buttonPanel.add(colorButton);
+		
+		sliderPanel.setPreferredSize(new Dimension(250, 450));;
+		sliderPanel.add(scaleSlider);
+		sliderPanel.add(edgeSlider);
+		
+		this.add(buttonPanel);
+		this.add(sliderPanel);
 		
 	}
 
 	private void setupSliders()
 	{
-		Hastable<Integer, JLabel> scaleLabels = new Hashtable<Integer, JLabel>();
-		Hastable<Integer, JLabel> edgeLabels = new Hashtable<Integer, JLabel>();
+		Hashtable<Integer, JLabel> scaleLabels = new Hashtable<Integer, JLabel>();
+		Hashtable<Integer, JLabel> edgeLabels = new Hashtable<Integer, JLabel>();
 		
 		scaleLabels.put(MINIMUM_SCALE, new JLabel("<HTML>Small<BR>Shape</HTML>"));
 		scaleLabels.put((MAXIMUM_SCALE + MINIMUM_SCALE) / 2, new JLabel("<HTML>Small<BR>Shape</HTML>"));
