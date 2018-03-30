@@ -3,6 +3,9 @@ package art.view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Polygon;
+import java.awt.Rectangle;
+import java.awt.geom.Ellipse2D;
 import java.util.Hashtable;
 
 import javax.swing.JButton;
@@ -127,8 +130,54 @@ public class ArtPanel extends JPanel
 	{
 		
 	}
-
-
-
-
+	private boolean coinFlip()
+	{
+		return (int) (Math.random() * 2) == 0;
+	}
+	
+	private Polygon createPolygon(int sides)
+	{
+		Polygon currentShape = new Polygon();
+		
+		int originX = (int) (Math.random() * 600);
+		int orginY = (int) (Math.random() * 600);
+		
+		for(int index = 0; index < sides; index++)
+		{
+			int minus = coinFlip() ? -1 : 1;
+			int shiftX = (int) (Math.random() * currentScale) * minus;
+			minus = coinFlip() ? - 1 : 1;
+			int shiftY = (int) (Math.random() * currentScale) * minus;
+			currentShape.addPoint(originX + shiftX, orginY + shiftY);
+		}
+		
+		return currentShape;
+	}
+	
+	private Rectangle createRectangle()
+	{
+		Rectangle currentRectangle;
+		
+		int cornerX = (int) (Math.random() * 600);
+		int cornerY = (int) (Math.random() * 600);
+		int width = (int)(Math.random() * currentScale) + 1;
+		if(coinFlip())
+		{
+			currentRectangle = new Rectangle(cornerX, cornerY, width, width);
+		}
+		else
+		{
+			int height = (int)(Math.random() * currentScale) + 1;
+			currentRectangle = new Rectangle(cornerX, cornerY, width, height);
+		}
+		
+		return currentRectangle;
+	}
+	
+	private Ellipse2D createEllipse()
+	{
+		Ellipse2D ellipse = new Ellipse2D.Double();
+		
+		
+	}
 }

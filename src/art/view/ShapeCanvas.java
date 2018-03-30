@@ -12,6 +12,10 @@ import art.controller.ArtController;
 
 public class ShapeCanvas extends JPanel
 {
+	public ShapeCanvas(ArtController app)
+	{
+	}
+
 	private ArrayList<Polygon> triangleList;
 	private ArrayList<Polygon> polygonList;
 	private ArrayList<Ellipse2D> ellipseList;
